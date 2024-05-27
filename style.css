@@ -1,0 +1,87 @@
+body {
+    font-family: 'Times New Roman', Times, serif;
+    padding: 0;
+    border: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.wrapper {
+    margin-top: 50px;
+    border: 2px solid rgba(0, 0, 0, 60%);
+    border-radius: 10px;
+    height: fit-content;
+    width: 400px;
+}
+
+.inputWrapper {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin: 10px auto;
+}
+
+label {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.toDoText {
+    width: 200px;
+    height: 30px;
+    border: 2px solid rgba(0, 0, 0, 40%);
+    border-radius: 5px;
+    outline: none;
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+#InsertButton {
+    width: 75px;
+    height: 30px;
+    cursor: pointer;
+}
+
+#headerList {
+    padding: 0 40px;
+}
+
+#headerList li {
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    border-bottom: 1px solid rgba(0, 0, 0, 40%);
+}
+
+.inputEdit, .text {
+    font-family: 'Times New Roman', Times, serif;
+    outline: none;
+    border: none;
+    font-size: 1.2rem;
+    margin:  20px 0 20px 5px;
+}
+
+.actionButtons {
+    width: 90px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.actionButtons button {
+    margin: 0 0 5px 0;
+    border: none;
+    outline: none;
+    background-color: white;
+    cursor: pointer;
+    font-size: 0.75rem;
+    text-decoration: underline;
+}
+
+.actionButtons button:hover {
+    color: rgb(81, 51, 252);
+}
