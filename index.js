@@ -4,9 +4,9 @@
 
     Funzioni:
 
-    - Aggiunge elementi con testo, pulsante "Modifica" e "Rimuovi".
-    - Permette la modifica del testo cliccando su "Modifica".
-    - Elimina elementi cliccando su "Rimuovi".
+    - Aggiunge elementi con testo, pulsante "Edit" e "Remove".
+    - Permette la modifica del testo cliccando su "Edit".
+    - Elimina elementi cliccando su "Remove".
 */
 
 
