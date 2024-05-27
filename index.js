@@ -25,10 +25,11 @@ document.addEventListener('DOMContentLoaded', () => {
         // Creazione del nuovo elemento <li> con il testo dell'input e i pulsanti Edit e Remove
         const li = document.createElement('li');
         li.innerHTML = `
-            <p>${input.value}</p>
-            <button class="edit">Edit</button>
-            <button class="remove">Remove</button>
-            <hr class="divider">
+            <p class="text">${input.value}</p>
+            <div class="actionButtons">
+                <button class="edit">Edit</button>
+                <button class="remove">Remove</button>
+            </div>         
         `;
         headerList.appendChild(li);
         addToLocalStorage();  // Salvataggio del nuovo stato nel LocalStorage
@@ -42,6 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const input = document.createElement('input');
         input.setAttribute('type', 'text');
         input.setAttribute('value', paragraph.innerHTML);
+        input.setAttribute('class', 'inputEdit')
         paragraph.replaceWith(input); // Sostituzione del paragrafo con l'input
     
 
@@ -103,10 +105,10 @@ document.addEventListener('DOMContentLoaded', () => {
     headerList.addEventListener('click', (event) => {
         // Controllo per verificare quale pulsante sia stato premuto
         if (event.target.classList.contains('edit')) {
-            const paragraph = event.target.previousElementSibling; // Selezione del paragrafo associato al pulsante Edit
+            const paragraph = event.target.closest('li').querySelector('p'); // Selezione del paragrafo associato al pulsante Edit
             editElement(paragraph);
         } else if (event.target.classList.contains('remove')) {
-            const li = event.target.parentElement; // Selezione dell'elemento <li> associato al pulsante Remove
+            const li = event.target.closest('li'); // Selezione dell'elemento <li> associato al pulsante Remove
             removeElement(li);
         }
     });
