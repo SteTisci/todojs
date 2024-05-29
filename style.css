@@ -1,87 +1,200 @@
-body {
-    font-family: 'Times New Roman', Times, serif;
-    padding: 0;
-    border: 0;
+/* style.css */
+
+/* Reset di base */
+* {
     margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Stile del body */
+body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(to right, #00c6ff, #0072ff);
     display: flex;
-    align-items: center;
-    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100vh;
+    padding-top: 50px;
+    color: #333;
 }
 
+/* Wrapper principale */
 .wrapper {
-    margin-top: 50px;
-    border: 2px solid rgba(0, 0, 0, 60%);
+    background-color: #fff;
     border-radius: 10px;
-    height: fit-content;
-    width: 400px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+    padding: 20px;
+    animation: fadeIn 0.8s ease-in-out;
 }
 
+/* Animazione per il wrapper */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Stile del titolo */
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #333;
+}
+
+/* Wrapper dell'input */
 .inputWrapper {
     display: flex;
-    align-items: center;
-    flex-direction: column;
-    margin: 10px auto;
-}
-
-label {
-    font-size: 1.5rem;
-    font-weight: bold;
-    margin-bottom: 10px;
-}
-
-.toDoText {
-    width: 200px;
-    height: 30px;
-    border: 2px solid rgba(0, 0, 0, 40%);
-    border-radius: 5px;
-    outline: none;
-    font-size: 1rem;
-    margin-bottom: 10px;
-}
-
-#InsertButton {
-    width: 75px;
-    height: 30px;
-    cursor: pointer;
-}
-
-#headerList {
-    padding: 0 40px;
-}
-
-#headerList li {
-    margin: 20px auto;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    border-bottom: 1px solid rgba(0, 0, 0, 40%);
-}
-
-.inputEdit, .text {
-    font-family: 'Times New Roman', Times, serif;
-    outline: none;
-    border: none;
-    font-size: 1.2rem;
-    margin:  20px 0 20px 5px;
-}
-
-.actionButtons {
-    width: 90px;
-    display: flex;
-    flex-direction: row;
     justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+/* Stile dell'etichetta */
+.inputWrapper label {
+    font-size: 18px;
+    margin-right: 10px;
+}
+
+/* Stile dell'input di testo */
+.inputWrapper input.toDoText {
+    flex-grow: 1;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-right: 10px;
+    transition: border-color 0.3s;
+}
+
+.inputWrapper input.toDoText:focus {
+    border-color: #00c6ff;
+    outline: none;
+}
+
+/* Stile del pulsante Add */
+.inputWrapper button#InsertButton {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #00c6ff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.inputWrapper button#InsertButton:hover {
+    background-color: #0072ff;
+    transform: translateY(-2px);
+}
+
+/* Lista to-do */
+.toDoList {
+    list-style-type: none;
+}
+
+/* Elementi della lista */
+.toDoList li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    background-color: #f8f8f8;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.toDoList li:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+}
+
+/* Paragrafo del testo to-do */
+.toDoList li p.text {
+    margin: 0;
+    flex-grow: 1;
+    max-width: 300px;
+    overflow: hidden;
+    padding-right: 10px;
+    color: #555;
+}
+
+/* Stile dei pulsanti di azione */
+.actionButtons {
+    display: flex;
+    gap: 3px;
 }
 
 .actionButtons button {
-    margin: 0 0 5px 0;
+    padding: 5px 10px;
+    font-size: 0.8rem;
     border: none;
-    outline: none;
-    background-color: white;
+    border-radius: 5px;
     cursor: pointer;
-    font-size: 0.75rem;
-    text-decoration: underline;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-.actionButtons button:hover {
-    color: rgb(81, 51, 252);
+/* Pulsante Edit */
+.actionButtons button.done {
+    border: none;
+    outline: none;
+    width: 30px;
+    border-radius: 10px;
+    color: #4caf50;
+    background-color: #f8f8f8;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.actionButtons button.done:hover {
+    background-color: #43a047;
+    transform: translateY(-2px);
+    color: white;
+    text-decoration: none;
+}
+
+/* Pulsante Remove */
+.actionButtons button.remove {
+    border: none;
+    outline: none;
+    width: 30px;
+    border-radius: 10px;
+    color: #f44336;
+    background-color: #f8f8f8;
+    font-size: 0.9rem;
+}
+
+.actionButtons button.remove:hover {
+    background-color: #e53935;
+    transform: translateY(-2px);
+    color: white;
+    text-decoration: none;
+}
+
+/* Input di modifica */
+.inputEdit {
+    flex-grow: 1;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-right: 10px;
+    transition: border-color 0.3s;
+}
+
+.inputEdit:focus {
+    border-color: #00c6ff;
+    outline: none;
+    overflow: scroll;
 }
