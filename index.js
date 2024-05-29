@@ -4,9 +4,11 @@
 
     Funzioni:
 
-    - Aggiunge elementi con testo, pulsante "Edit" e "Remove".
-    - Permette la modifica del testo cliccando su "Edit".
-    - Elimina elementi cliccando su "Remove".
+    - Inserimento Dinamico di elementi di testo in una lista non ordinata
+    - Manipolazione di elementi per la Modifica del contenuto
+    - Rimozione di elementi della lista secondo la scelta dell'utente
+    - Salvataggio e Caricamento lista nel localStorage per persistenza dati
+    - Gestione degli eventi per le operazioni base  
 */
 
 
@@ -27,8 +29,8 @@ document.addEventListener('DOMContentLoaded', () => {
         li.innerHTML = `
             <p class="text">${input.value}</p>
             <div class="actionButtons">
-                <button class="edit">Edit</button>
-                <button class="remove">Remove</button>
+                <button class="done">✓</button>
+                <button class="remove">X</button>
             </div>         
         `;
         headerList.appendChild(li);
@@ -39,14 +41,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Funzione per modificare un elemento <p> esistente
     const editElement = (paragraph) => {
+
         // Creazione di un input di testo con il contenuto del paragrafo
         const input = document.createElement('input');
         input.setAttribute('type', 'text');
         input.setAttribute('value', paragraph.innerHTML);
-        input.setAttribute('class', 'inputEdit')
-        paragraph.replaceWith(input); // Sostituzione del paragrafo con l'input
+        input.setAttribute('class', 'inputEdit');
+        
+        // Sostituzione del paragrafo con l'input
+        paragraph.replaceWith(input); 
     
-
         // Funzione per salvare le modifiche e ripristinare il paragrafo
         const saveEdit = () => {
             paragraph.innerHTML = input.value.trim();
@@ -61,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    // Funzione per rimuovere un elemento <li> dalla lista
+    // Funzione per rimuovere un elemento <li>
     const removeElement = (li) => {
         li.remove();
         addToLocalStorage();
@@ -101,15 +105,24 @@ document.addEventListener('DOMContentLoaded', () => {
     loadFromLocalStorage();
 
 
-    // Gestione click per pulsanti Edit e Remove
+    // Gestione click per pulsanti Edit, Remove e Done
+    // Controllo per verificare quale pulsante sia stato premuto
     headerList.addEventListener('click', (event) => {
-        // Controllo per verificare quale pulsante sia stato premuto
-        if (event.target.classList.contains('edit')) {
-            const paragraph = event.target.closest('li').querySelector('p'); // Selezione del paragrafo associato al pulsante Edit
+
+        // Modifica testo 
+        if (event.target.classList.contains('text')) {
+            const paragraph = event.target.closest('li').querySelector('p');
             editElement(paragraph);
+
+         // Rimozione Elemento <li>
         } else if (event.target.classList.contains('remove')) {
-            const li = event.target.closest('li'); // Selezione dell'elemento <li> associato al pulsante Remove
+            const li = event.target.closest('li');
             removeElement(li);
-        }
+
+         // Aggiunta line-through a elemento <p>
+        } else if (event.target.classList.contains('done')) {{
+            let paragraph = event.target.closest('li').querySelector('p');
+            paragraph.style.textDecoration = (paragraph.style.textDecoration === 'line-through') ? 'none' : 'line-through';
+        }}
     });
 });
